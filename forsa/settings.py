@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'forsa',
         'USER':'postgres',
-        'PASSWORD':'1234',
+        'PASSWORD':'123456',
         'HOST':'localhost',
         'POST':'5432'
     }
