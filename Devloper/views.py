@@ -9,7 +9,7 @@ from .serializer import SingUpSerializer
 User = get_user_model()  # استخدام نموذج المستخدم المخصص
 
 @api_view(['POST'])
-def register(request):
+def login(request):
     data = request.data
     
     # التحقق من صحة البيانات باستخدام Serializer
