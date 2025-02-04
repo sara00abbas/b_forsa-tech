@@ -32,7 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Developer.apps.DeveloperConfig',
+    
+    'Devloper',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_filters',
     'rest_framework_simplejwt',
+   
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,11 @@ SIMPLE_JWT ={
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',) 
 
 }
+
+AUTH_USER_MODEL ='Devloper.User'
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
