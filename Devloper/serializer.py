@@ -3,6 +3,10 @@ from django.contrib.auth import get_user_model  # استخدام النموذج 
 
 User = get_user_model()  # اجلب نموذج المستخدم الحالي
 
+users = User.objects.all()
+for user in users:
+    print(user.username, user.email)
+
 class SingUpSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -11,9 +15,6 @@ class SingUpSerializer(serializers.ModelSerializer):
 
 
 
-# users = User.objects.all()
-# for user in users:
-#     print(user.username, user.email)
 
 
 
