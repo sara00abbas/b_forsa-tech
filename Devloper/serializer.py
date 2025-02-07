@@ -11,24 +11,13 @@ class SingUpSerializer(serializers.ModelSerializer):
 
 
 
-# class LoginSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model =User
-#         fields=('username','password')
-
-#         extra_kword={
-#              'username':{'required':True,'allow_blank':False},
-#              'password':{'required':True,'allow_blank':False,'min_length':8}
-           
-#              }
+# users = User.objects.all()
+# for user in users:
+#     print(user.username, user.email)
 
 
 
-# مشان معلومات المستخدم 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('first_name','last_name', 'email', 'password') 
+
 
 
 

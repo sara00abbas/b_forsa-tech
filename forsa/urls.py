@@ -9,10 +9,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include("devloper.urls")),
-    path('api/admin/login/', TokenObtainPairView.as_view(), name='admin_login'),
-
-
+    path('',include("devloper.urls"))
     
 ]
 
