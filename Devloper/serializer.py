@@ -11,6 +11,9 @@ class SingUpSerializer(serializers.ModelSerializer):
 
 
 
+# users = User.objects.all()
+# for user in users:
+#     print(user.username, user.email)
 
 
 

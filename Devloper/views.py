@@ -9,7 +9,7 @@ from .serializer import SingUpSerializer
 User = get_user_model()  
 
 @api_view(['POST'])
-def login(request):
+def register(request):
     data = request.data
     
     
