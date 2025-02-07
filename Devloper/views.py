@@ -1,40 +1,35 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
-from Developer.serializer import SingUpSerializer
+from .serializer import SingUpSerializer
 
-# from django.contrib.auth.hashers import make_password  مشان تشفير الباسوورد
-
-# Create your views here.
-
+User = get_user_model()  
 
 @api_view(['POST'])
-def register(request):
+def login(request):
     data = request.data
-    user = SingUpSerializer(data = data)
-
-    if user.is_valid():
-        if not User.objects.filter(username=data['email']).exists():
-            user = User.objects.create(
-                first_name = data['first_name'],
-                last_name = data['last_name'], 
-                email = data['email'] , 
-                username = data['email'] , 
-                password = make_password(data['password']),
-            )
-            return Response(
-                {'notes':'Your account registered susccessfully!' },
-                    status=status.HTTP_201_CREATED
-                    )
-        else:
-            return Response(
-                {'error':'This email its already exists!' },
-                    status=status.HTTP_400_BAD_REQUEST
-                    )
-    else:
-        return Response(user.errors)
     
+    
+    serializer = SingUpSerializer(data=data)
+    if serializer.is_valid():
+        email = data.get('email')
+        username = data.get('username')
+        password = data.get('password')
+
+        
+        if User.objects.filter(email=email).exists():
+            return Response({'error': 'This email already exists!'}, status=status.HTTP_400_BAD_REQUEST)
+
+       
+        user = User.objects.create(
+            email=email,
+            username=username,
+            password=make_password(password),  
+        )
+
+        return Response({'details': 'Your account registered successfully'}, status=status.HTTP_201_CREATED)
+    
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
